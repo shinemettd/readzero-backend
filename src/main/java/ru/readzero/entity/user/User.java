@@ -31,4 +31,7 @@ public class User extends BaseEntity {
     @JoinColumn(name = "ROLE_ID", nullable = false)
     UserRole role;
 
+    @OneToOne(mappedBy = "user")
+    UserInfo userInfo;
+
 }

@@ -6,8 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 import ru.readzero.entity.absctract.BaseEntity;
-import ru.readzero.entity.user.User;
-import ru.readzero.entity.user.UserDetails;
+import ru.readzero.entity.user.UserInfo;
 
 import java.util.Set;
 
@@ -26,6 +25,6 @@ public class Cult extends BaseEntity { //группы, мб не нужно бу
     String description;
 
     @OneToMany(mappedBy = "cult")
-    Set<UserDetails> user;
+    Set<UserInfo> user;
 
 }

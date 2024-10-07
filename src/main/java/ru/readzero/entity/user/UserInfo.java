@@ -7,14 +7,23 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 import ru.readzero.entity.Cult;
 import ru.readzero.entity.absctract.EditableBaseEntity;
+import ru.readzero.entity.post.PostRate;
+import ru.readzero.entity.post.PostReport;
+
+import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "USER_DETAILS")
+@Table(name = "USER_INFOS")
 @EqualsAndHashCode(callSuper = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@SequenceGenerator(name = "USER_DETAILS_SEQUENCE", sequenceName = "USER_DETAILS_SEQ")
-public class UserDetails extends EditableBaseEntity {
+@SequenceGenerator(name = "USER_INFO_SEQUENCE", sequenceName = "USER_INFO_SEQ")
+public class UserInfo extends EditableBaseEntity {
+
+    @MapsId
+    @OneToOne
+    @JoinColumn(name = "USER_ID", nullable = false)
+    User user;
 
     @Column(name = "AVATAR_URL")
     String avatarUrl;
@@ -28,5 +37,11 @@ public class UserDetails extends EditableBaseEntity {
     @ManyToOne
     @JoinColumn(name = "CULT_ID")
     Cult cult;
+
+    @OneToMany(mappedBy = "user")
+    Set<PostRate> postRates;
+
+    @OneToMany(mappedBy = "reportAuthor")
+    Set<PostReport> postReports;
 
 }

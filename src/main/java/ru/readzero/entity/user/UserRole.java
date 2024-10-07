@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "USER_ROLE")
+@Table(name = "USER_ROLES")
 @EqualsAndHashCode(callSuper = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @SequenceGenerator(name = "USER_ROLE_SEQUENCE", sequenceName = "USER_ROLE_SEQ")
