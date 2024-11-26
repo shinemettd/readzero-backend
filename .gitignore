@@ -32,6 +32,9 @@ build/
 ### VS Code ###
 .vscode/
 
+.mvn
 mvnw
 mvnw.cmd
 .env
+
+src/main/java/ru/readzero/test
