@@ -15,7 +15,7 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @SequenceGenerator(name = "POST_COMMENTS_SEQUENCE", sequenceName = "POST_COMMENTS_SEQ")
-public class PostComment extends CommentableBaseEntity<Post> {
+public class PostComment extends CommentableBaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "POST_ID", nullable = false)

@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 import ru.readzero.entity.Cult;
 import ru.readzero.entity.absctract.EditableBaseEntity;
+import ru.readzero.entity.post.PostComment;
 import ru.readzero.entity.post.PostRate;
 import ru.readzero.entity.post.PostReport;
 
@@ -43,5 +44,8 @@ public class UserInfo extends EditableBaseEntity {
 
     @OneToMany(mappedBy = "reportAuthor")
     Set<PostReport> postReports;
+
+    @OneToMany(mappedBy = "commentAuthor")
+    Set<PostComment> postComments;
 
 }
