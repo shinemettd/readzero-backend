@@ -11,6 +11,7 @@ import ru.readzero.entity.post.PostComment;
 import ru.readzero.entity.post.PostRate;
 import ru.readzero.entity.post.PostReport;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -40,12 +41,12 @@ public class UserInfo extends EditableBaseEntity {
     Cult cult;
 
     @OneToMany(mappedBy = "user")
-    Set<PostRate> postRates;
+    Set<PostRate> postRates = new HashSet<>();
 
     @OneToMany(mappedBy = "reportAuthor")
-    Set<PostReport> postReports;
+    Set<PostReport> postReports = new HashSet<>();
 
     @OneToMany(mappedBy = "commentAuthor")
-    Set<PostComment> postComments;
+    Set<PostComment> postComments = new HashSet<>();
 
 }

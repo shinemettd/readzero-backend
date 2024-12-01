@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 import ru.readzero.entity.absctract.CommentableBaseEntity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -21,11 +22,18 @@ public class PostComment extends CommentableBaseEntity {
     @JoinColumn(name = "POST_ID", nullable = false)
     Post post;
 
+    @Column(name = "CONTENT", nullable = false)
+    String content;
+
     @ManyToOne
     @JoinColumn(name = "PARENT_COMMENT_ID")
     PostComment parentComment;
 
     @OneToMany(mappedBy = "parentComment", fetch = FetchType.EAGER)
-    Set<PostComment> replies;
+    Set<PostComment> replies = new HashSet<>();
+
+    public void addReply(PostComment reply) {
+        this.replies.add(reply);
+    }
 
 }

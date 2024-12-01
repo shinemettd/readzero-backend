@@ -5,6 +5,8 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.ColumnDefault;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import ru.readzero.entity.absctract.BaseEntity;
@@ -29,15 +31,22 @@ public class User extends BaseEntity implements UserDetails {
     @Column(name = "PASSWORD", nullable = false)
     String password;
 
-    @Column(name = "IS_BLOCKED", nullable = false)
+    @Column(name = "IS_BLOCKED")
+    @ColumnDefault(value = "false")
     boolean isBlocked;
 
     @ManyToOne
-    @JoinColumn(name = "ROLE_ID", nullable = false)
+    @JoinColumn(name = "ROLE_ID")
     UserRole role;
 
     @OneToOne(mappedBy = "user")
     UserInfo userInfo;
+
+    public void createUserInfo() {
+        if (this.userInfo == null) {
+            this.userInfo = new UserInfo();
+        }
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
