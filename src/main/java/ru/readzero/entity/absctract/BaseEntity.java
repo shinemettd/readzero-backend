@@ -14,9 +14,13 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @EntityListeners(AuditingEntityListener.class)
+@Table(
+        indexes = @Index(name = "index_creation_date", columnList = "CREATION_DATE")
+)
 public abstract class BaseEntity implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     Long id;
 
     @CreatedDate

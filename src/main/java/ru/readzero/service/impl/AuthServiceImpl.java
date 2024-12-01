@@ -40,6 +40,7 @@ public class AuthServiceImpl implements AuthService {
         user.setUsername(registerRequest.username());
         user.setPassword(passwordEncoder.encode(registerRequest.password()));
         user.setEmail(registerRequest.email());
+        user.createUserInfo();
 
         userRepository.save(user);
 

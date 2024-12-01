@@ -2,7 +2,7 @@ spring:
   profiles:
     include: datasource
   application:
-    name: ${APPLICATION_NAME}
+    name: ${APPLICATION_NAME:readzero}
 
 server:
   servlet:
@@ -10,6 +10,6 @@ server:
   port: 8080
 
 jwt:
-  secret: ${JWT_SECRET_KEY}
+  secret: ${JWT_SECRET_KEY:secretsecretsecretsecretsecretsecretsecret}
   expiration: ${JWT_EXPIRATION_MILLIS:3600000}
   refreshExpiration: ${JWT_REFRESH_EXPIRATION_MILLIS:3600000}

@@ -6,6 +6,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.time.LocalDateTime;
 
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
 public abstract class EditableBaseEntity extends BaseEntity {
 
     @Column(name = "IS_EDITED")
+    @ColumnDefault(value = "false")
     boolean isEdited;
 
     @Column(name = "EDIT_DATE")

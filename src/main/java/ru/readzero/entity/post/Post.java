@@ -6,7 +6,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 import ru.readzero.entity.absctract.EditableBaseEntity;
+import ru.readzero.entity.user.User;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -25,17 +27,20 @@ public class Post extends EditableBaseEntity {
     String content;
 
     @OneToMany(mappedBy = "post")
-    Set<PostRate> postRates;
+    Set<PostRate> postRates = new HashSet<>();
 
     @OneToMany(mappedBy = "post")
-    Set<PostReport> postReports;
+    Set<PostReport> postReports = new HashSet<>();
 
     @OneToMany(mappedBy = "post")
-    Set<PostComment> postComments;
+    Set<PostComment> postComments = new HashSet<>();
 
-//    @ManyToOne
-//    @JoinColumn(name = "POST_ID")
-//    Set<PostComment> comments; //пока хз как делать, можно будет разделить на разные комменты, либо единые
+    @OneToOne
+    @JoinColumn(name = "AUTHOR_ID", nullable = false)
+    User author;
 
-    //todo комменты, теги, реакции/оценка
+    public void addComment(PostComment comment) {
+        this.postComments.add(comment);
+    }
+
 }

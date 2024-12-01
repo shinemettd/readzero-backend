@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet id="1.1-insert-user-roles" author="shinemettd">
+        <insert tableName="USER_ROLES">
+            <column name="ID" value="1" />
+            <column name="NAME" value="USER" />
+            <column name="DESCRIPTION" value="Standard user role" />
+            <column name="CREATION_DATE" valueComputed="CURRENT_TIMESTAMP" />
+            <column name="IS_DELETED" value="false" />
+        </insert>
+        <insert tableName="USER_ROLES">
+            <column name="ID" value="2" />
+            <column name="NAME" value="ADMIN" />
+            <column name="DESCRIPTION" value="Administrator role" />
+            <column name="CREATION_DATE" valueComputed="CURRENT_TIMESTAMP" />
+            <column name="IS_DELETED" value="false" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>
